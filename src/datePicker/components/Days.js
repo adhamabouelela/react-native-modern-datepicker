@@ -1,5 +1,5 @@
 import React, {useState, useMemo} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, I18nManager} from 'react-native';
 
 import {useCalendar} from '../DatePicker';
 
@@ -71,6 +71,7 @@ const styles = theme =>
       justifyContent: 'center',
       alignItems: 'center',
       margin: 3,
+      transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
     },
     dayItemSelected: {
       backgroundColor: theme.mainColor,
