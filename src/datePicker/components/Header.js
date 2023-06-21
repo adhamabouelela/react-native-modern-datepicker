@@ -33,7 +33,8 @@ const Header = ({changeMonth}) => {
   const onChangeMonth = (type) => {
     if (disableChange) return;
     setDisableChange(true);
-    changeMonthAnimation(type);
+    const arrowType = I18nManager.isRTL ? type === 'NEXT' ? 'PREVIOUS' : 'NEXT' : type
+    changeMonthAnimation(arrowType);
     const modificationNumber = type === 'NEXT' ? 1 : -1;
     const newDate = utils
       .getDate(mainState.activeDate)
