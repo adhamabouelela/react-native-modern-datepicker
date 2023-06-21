@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, Text, Animated} from 'react-native';
+import {View, StyleSheet, Text, Animated, I18nManager} from 'react-native';
 
 import {Header, Days} from '.';
 import {useCalendar} from '../DatePicker';
@@ -50,11 +50,13 @@ const styles = theme =>
       borderBottomColor: theme.borderColor,
       borderBottomWidth: 1,
       marginHorizontal: 15,
+      transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
     },
     daysNameText: {
       fontFamily: theme.defaultFont,
       color: theme.textSecondaryColor,
       fontSize: theme.textFontSize,
+      transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
     },
     daysContainer: {
       flex: 1,
@@ -63,6 +65,7 @@ const styles = theme =>
       margin: 15,
       marginTop: 5,
       marginBottom: 0,
+      transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
     },
     days: {
       position: 'absolute',
@@ -70,6 +73,7 @@ const styles = theme =>
       height: '100%',
       top: 0,
       right: 0,
+      transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
     },
   });
 
