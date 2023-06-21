@@ -64,7 +64,7 @@ class utils {
       isGregorian,
       reverse: reverse === 'unset' ? !isGregorian : reverse,
     };
-    this.config = isGregorian ? gregorianConfigs : jalaaliConfigs;
+    this.config = gregorianConfigs;
     this.config = {...this.config, ...configs};
     if (mode === 'time' || mode === 'datepicker') {
       this.config.selectedFormat = this.config.dateFormat + ' ' + this.config.timeFormat;
@@ -72,7 +72,7 @@ class utils {
   }
 
   get flexDirection() {
-    return {flexDirection: this.data.reverse ? (I18nManager.isRTL ? 'row' : 'row-reverse') : 'row'};
+    return {flexDirection: 'row'};
   }
 
   getFormated = (date, formatName = 'selectedFormat') => date.format(this.config[formatName]);
@@ -99,7 +99,9 @@ class utils {
     return value.replace(/[۰-۹]/g, (w) => w.charCodeAt(0) - charCodeZero);
   };
 
-  getDate = (time) => moment(time, this.config.selectedFormat);
+ 
+
+  getDate = (time) => moment(time, this.config.selectedFormat, 'en');
 
   getMonthYearText = (time) => {
     const {isGregorian} = this.data;
@@ -210,7 +212,7 @@ class utils {
 
     const shownAnimation = {
       opacity: monthYearAnimation.interpolate({
-        inputRange: [0, 1],
+        inputRange:  [0, 1],
         outputRange: [1, 1],
       }),
       transform: [
